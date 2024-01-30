@@ -2,96 +2,56 @@
     name: Lattialämmitys kotona-poissa
     unique_id: lattia_kotonapoissa
     command_state: >
-      curl "http://192.168.86.10:80/request?S_135_85" --output /config/oumanltp.txt
+      curl "http://192.168.86.10:80/request?S_135_85" --output /config/ouman_eh-800/oumanltp.txt
     command_on: >
-      curl "http://192.168.86.10:80/update?S_135_85=1;" --output /config/oumanltp.txt
+      curl "http://192.168.86.10:80/update?S_135_85=1;" --output /config/ouman_eh-800/oumanltp.txt
     command_off: >
-      curl "http://192.168.86.10:80/update?S_135_85=0;" --output /config/oumanltp.txt
+      curl "http://192.168.86.10:80/update?S_135_85=0;" --output /config/ouman_eh-800/oumanltp.txt
       
 - sensor:
     name: Lattialämmitys tila
-    command: 'curl "http://192.168.86.10:80/request?S_135_85" --output /config/oumanltp.txt'
+    command: 'curl "http://192.168.86.10:80/request?S_135_85" --output /config/ouman_eh-800/oumanltp.txt'
 
 - sensor:
     name: Ulkolämpötila eh800
-    command: 'curl "http://192.168.86.10:80/request?S_227_85" --output /config/oumanouttemp.txt'
+    command: 'curl "http://192.168.86.10:80/request?S_227_85" --output /config/ouman_eh-800/oumanouttemp.txt'
 
 - sensor:
     name: Lattialämmitys menovesi
-    command: 'curl "192.168.86.10:80/request?S_259_85" --output /config/oumankierto.txt'
+    command: 'curl "192.168.86.10:80/request?S_259_85" --output /config/ouman_eh-800/oumankierto.txt'
 
 - sensor:
     name: Lattialämmitys menovesipyyntö
-    command: 'curl "http://192.168.86.10:80/request?S_275_85" --output /config/oumanpyynto.txt'
+    command: 'curl "http://192.168.86.10:80/request?S_275_85" --output /config/ouman_eh-800/oumanpyynto.txt'
 
 - sensor:
     name: Lattialämmitys venttiili
-    command: 'curl "http://192.168.86.10:80/request?S_272_85" --output /config/oumanventtiili.txt'
+    command: 'curl "http://192.168.86.10:80/request?S_272_85" --output /config/ouman_eh-800/oumanventtiili.txt'
 
 - sensor:
     name: Ulkolämpötila EH800
-    command: 'cut -b 18-20 /config/oumanouttemp.txt'
+    command: 'cut -b 18-20 /config/ouman_eh-800/oumanouttemp.txt'
     unit_of_measurement: "°C"
 
 - sensor:
     name: Lattialämmityksen menoveden lämpötila
-    command: 'cut -b 18-21 /config/oumankierto.txt'
+    command: 'cut -b 18-21 /config/ouman_eh-800/oumankierto.txt'
     unit_of_measurement: "°C"
 
 - sensor:
     name: Lattialämmityksen menoveden pyyntö
-    command: 'cut -b 18-21 /config/oumanpyynto.txt'
+    command: 'cut -b 18-21 /config/ouman_eh-800/oumanpyynto.txt'
     unit_of_measurement: "°C"
 
 - sensor:
     name: Lattialämmityksen venttiilin asento
-    command: 'cut -b 18-19 /config/oumanventtiili.txt'
+    command: 'cut -b 18-19 /config/ouman_eh-800/oumanventtiili.txt'
     unit_of_measurement: "%"
 
 - binary_sensor:
     device_class: presence
     name: Lattialämmitys kotona-poissa
-    command: 'cut -b 18 /config/oumanltp.txt'
+    command: 'cut -b 18 /config/ouman_eh-800/oumanltp.txt'
     payload_on: 0
     payload_off: 1
-    
-# Example configuration.yaml entry
-#- switch:
-#    platform: template
-#    switches:
-#      llkotonapoissa:
-#        value_template: "{{ is_state('sensor.', 'on') }}"
-#        turn_on:
-#          service: switch.turn_on
-#          target:
-#            entity_id: switch.skylight_open
-#        turn_off:
-#          service: switch.turn_off
-#          target:
-#            entity_id: switch.skylight_close
-
-#sensor:
-#  - platform: command_line
-#    name: Ouman EH800 - Ulkolämpötila
-#    command: curl "http://192.168.86.10:80/request?S_227_85" | cut -d ';' -f 1 | cut -b 18-
-#    unit_of_measurement: "°C"
-#    unique_id: sensor.ouman_eh800_temperatur_ute
-
-#  - platform: command_line
-#    name: Ouman EH800 - Lattiakierron lämpötila
-#    command: curl "http://192.168.86.10:80/request?S_259_85" | cut -d ';' -f 1 | cut -b 18-
-#    unit_of_measurement: "°C"
-#    unique_id: sensor.ouman_eh800_L1_water_temp
-    
-#  - platform: command_line
-#    name: Ouman EH800 - Lattiakierron pyyntö
-#    command: curl "http://192.168.86.10:80/request?S_275_85" | cut -d ';' -f 1 | cut -b 18-
-#    unit_of_measurement: "°C"
-#    unique_id: sensor.ouman_eh800_L1_water_request
-
-#  - platform: command_line
-#    name: Ouman EH800 - Venttiilin asento
-#    command: curl "http://192.168.86.10:80/request?S_272_85" | cut -d ';' -f 1 | cut -b 18-
-#    unit_of_measurement: "%"
-#    unique_id: sensor.ouman_eh800_L1_valve
     
