@@ -32,7 +32,7 @@
 - sensor:
     name: Lattialämmityksen hienosäätö
     command: curl "http://192.168.86.10:80/request?S_134_85" | cut -d "=" -f2 | cut -d ";" -f1
-     unit_of_measurement: "°C"
+    unit_of_measurement: "°C"
 
 - binary_sensor:
     device_class: presence
