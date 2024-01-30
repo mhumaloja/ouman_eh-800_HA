@@ -1,66 +1,43 @@
 - switch:
     name: Lattialämmitys kotona-poissa
     unique_id: lattia_kotonapoissa
-    command_state: >
-      curl "http://192.168.86.10:80/request?S_135_85" --output /config/ouman_eh-800/oumanltp.txt
-    command_on: >
-      curl "http://192.168.86.10:80/update?S_135_85=1;" --output /config/ouman_eh-800/oumanltp.txt
-    command_off: >
-      curl "http://192.168.86.10:80/update?S_135_85=0;" --output /config/ouman_eh-800/oumanltp.txt
+    command_state: curl "http://192.168.86.10:80/request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
+    command_on: curl "http://192.168.86.10:80/update?S_135_85=1;"
+    command_off: curl "http://192.168.86.10:80/update?S_135_85=0;"
       
 - sensor:
     name: Lattialämmitys tila
-    command: 'curl "http://192.168.86.10:80/request?S_135_85" --output /config/ouman_eh-800/oumanltp.txt'
+    command: curl "http://192.168.86.10:80/request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
 
 - sensor:
     name: Ulkolämpötila eh800
-    command: 'curl "http://192.168.86.10:80/request?S_227_85" --output /config/ouman_eh-800/oumanouttemp.txt'
+    command: curl "http://192.168.86.10:80/request?S_227_85" | cut -d "=" -f2 | cut -d ";" -f1
+    unit_of_measurement: "°C"
 
 - sensor:
     name: Lattialämmitys menovesi
-    command: 'curl "192.168.86.10:80/request?S_259_85" --output /config/ouman_eh-800/oumankierto.txt'
+    command: curl "192.168.86.10:80/request?S_259_85" | cut -d "=" -f2 | cut -d ";" -f1
+    unit_of_measurement: "°C"
 
 - sensor:
     name: Lattialämmitys menovesipyyntö
-    command: 'curl "http://192.168.86.10:80/request?S_275_85" --output /config/ouman_eh-800/oumanpyynto.txt'
+    command: curl "http://192.168.86.10:80/request?S_275_85" | cut -d "=" -f2 | cut -d ";" -f1
+    unit_of_measurement: "°C"
 
 - sensor:
     name: Lattialämmitys venttiili
-    command: 'curl "http://192.168.86.10:80/request?S_272_85" --output /config/ouman_eh-800/oumanventtiili.txt'
-
-- sensor:
-    name: Lattialämmityksen hienosäätö
-    command: 'curl "http://192.168.86.10:80/request?S_134_85" --output /config/ouman_eh-800/oumanfinetune.txt'
-
-- sensor:
-    name: Ulkolämpötila EH800
-    command: 'cut -b 18-20 /config/ouman_eh-800/oumanouttemp.txt'
-    unit_of_measurement: "°C"
-
-- sensor:
-    name: Lattialämmityksen menoveden lämpötila
-    command: 'cut -b 18-21 /config/ouman_eh-800/oumankierto.txt'
-    unit_of_measurement: "°C"
-
-- sensor:
-    name: Lattialämmityksen menoveden pyyntö
-    command: 'cut -b 18-21 /config/ouman_eh-800/oumanpyynto.txt'
-    unit_of_measurement: "°C"
-
-- sensor:
-    name: Lattialämmityksen venttiilin asento
-    command: 'cut -b 18-19 /config/ouman_eh-800/oumanventtiili.txt'
+    command: curl "http://192.168.86.10:80/request?S_272_85" | cut -d "=" -f2 | cut -d ";" -f1
     unit_of_measurement: "%"
 
 - sensor:
     name: Lattialämmityksen hienosäätö
-    command: 'cut -b 18-20 /config/ouman_eh-800/oumanfinetune.txt'
-    unit_of_measurement: "°C"
+    command: curl "http://192.168.86.10:80/request?S_134_85" | cut -d "=" -f2 | cut -d ";" -f1
+     unit_of_measurement: "°C"
 
 - binary_sensor:
     device_class: presence
     name: Lattialämmitys kotona-poissa
-    command: 'cut -b 18 /config/ouman_eh-800/oumanltp.txt'
+    command: curl "http://192.168.86.10:80/request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
     payload_on: 0
     payload_off: 1
     
