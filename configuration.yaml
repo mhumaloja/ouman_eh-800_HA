@@ -1,0 +1,7 @@
+
+
+
+command_line: !include command_line.yaml
+
+shell_command:
+  ouman_logon: 'curl "http://192.168.86.10:80/login?uid=tuu34;pwd=lattia34;" > /dev/null'
