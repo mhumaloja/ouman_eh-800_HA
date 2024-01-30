@@ -5,7 +5,7 @@ Simple copy-paste application to add EH-800 entities to Home Assistant
 
 INSTALL INSTRUCTIONS
 
-COPY FILES
+COPY FILE
 
 MODIFY configuration.yaml
 
