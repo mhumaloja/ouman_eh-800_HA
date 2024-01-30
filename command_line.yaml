@@ -29,6 +29,10 @@
     command: 'curl "http://192.168.86.10:80/request?S_272_85" --output /config/ouman_eh-800/oumanventtiili.txt'
 
 - sensor:
+    name: Lattialämmityksen hienosäätö
+    command: 'curl "http://192.168.86.10:80/request?S_134_85" --output /config/ouman_eh-800/oumanfinetune.txt'
+
+- sensor:
     name: Ulkolämpötila EH800
     command: 'cut -b 18-20 /config/ouman_eh-800/oumanouttemp.txt'
     unit_of_measurement: "°C"
@@ -47,6 +51,11 @@
     name: Lattialämmityksen venttiilin asento
     command: 'cut -b 18-19 /config/ouman_eh-800/oumanventtiili.txt'
     unit_of_measurement: "%"
+
+- sensor:
+    name: Lattialämmityksen hienosäätö
+    command: 'cut -b 18-20 /config/ouman_eh-800/oumanfinetune.txt'
+    unit_of_measurement: "°C"
 
 - binary_sensor:
     device_class: presence
