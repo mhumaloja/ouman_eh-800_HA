@@ -6,4 +6,4 @@
 command_line: !include command_line.yaml
 
 shell_command:
-  ouman_logon: 'curl "http://192.168.86.10:80/login?uid=youruser;pwd=yourpasswd;" > /dev/null'
+  ouman_logon: !secret ouman_logon
