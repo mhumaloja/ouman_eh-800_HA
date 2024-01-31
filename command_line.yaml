@@ -16,37 +16,36 @@
 
 - sensor:
     name: Lattialämmitys tila
-    command: curl "http://192.168.86.10:80/request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
+    command: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
 
 - sensor:
     name: Ulkolämpötila eh800
-    command: curl "http://192.168.86.10:80/request?S_227_85" | cut -d "=" -f2 | cut -d ";" -f1
+    command: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_227_85" | cut -d "=" -f2 | cut -d ";" -f1
     unit_of_measurement: "°C"
 
 - sensor:
     name: Lattialämmitys menovesi
-    command: curl "192.168.86.10:80/request?S_259_85" | cut -d "=" -f2 | cut -d ";" -f1
+    command: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_259_85" | cut -d "=" -f2 | cut -d ";" -f1
     unit_of_measurement: "°C"
 
 - sensor:
     name: Lattialämmitys menovesipyyntö
-    command: curl "http://192.168.86.10:80/request?S_275_85" | cut -d "=" -f2 | cut -d ";" -f1
+    command: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_275_85" | cut -d "=" -f2 | cut -d ";" -f1
     unit_of_measurement: "°C"
 
 - sensor:
     name: Lattialämmitys venttiili
-    command: curl "http://192.168.86.10:80/request?S_272_85" | cut -d "=" -f2 | cut -d ";" -f1
+    command: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_272_85" | cut -d "=" -f2 | cut -d ";" -f1
     unit_of_measurement: "%"
 
 - sensor:
     name: Lattialämmityksen hienosäätö
-    command: curl "http://192.168.86.10:80/request?S_134_85" | cut -d "=" -f2 | cut -d ";" -f1
+    command: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_134_85" | cut -d "=" -f2 | cut -d ";" -f1
     unit_of_measurement: "°C"
 
 - binary_sensor:
     device_class: presence
     name: Lattialämmitys kotona-poissa
-    command: curl "http://192.168.86.10:80/request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
+    command: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
     payload_on: 0
     payload_off: 1
-    
