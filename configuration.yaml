@@ -1,5 +1,6 @@
-
-
+## Insert these lines to configuration.yaml
+## command_line row points to yaml file containing all sensors and switches for Ouman EH-800
+## shell_command handles Ouman web interface session login in Home Assistant start (automation keeps it alive)
 
 command_line: !include command_line.yaml
 
