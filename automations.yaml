@@ -1,11 +1,14 @@
-- id: '1706471276837'
-  alias: Ouman logon cronjob
-  description: ''
-  trigger:
+## Add automation to keep login session alive
+## Open Home Assistant settings -> automations -> add automation -> edit yaml
+## Copy this configuration to create the automation (or create it using GUI)
+
+alias: Ouman logon cronjob
+description: ""
+trigger:
   - platform: time_pattern
     minutes: /5
-  condition: []
-  action:
+condition: []
+action:
   - service: shell_command.ouman_logon
     data: {}
-  mode: single
+mode: single
