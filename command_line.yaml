@@ -1,12 +1,4 @@
 - switch:
-    name: "Lattialämmitys kotona-poissa"
-    unique_id: "lattia_kotonapoissa"
-    command_on: "curl \"http://192.168.86.10:80/update?S_135_85=1;\" \n curl \"http://192.168.86.10:80/update?S_222_85=1;\""
-    command_off: "curl \"http://192.168.86.10:80/update?S_135_85=0;\" \n curl \"http://192.168.86.10:80/update?S_222_85=0;\""
-    command_state: "curl \"http://192.168.86.10:80/request?S_222_85;\" | cut -d \"=\" -f2 | cut -d \";\" -f1"
-    value_template: "{{ value == \"1\" }}"
-
-- switch:
     name: Lattialämmitys kotona-poissa
     unique_id: lattia_kotonapoissa
     command_on: curl "http://192.168.86.10:80/update?S_135_85=1;"
