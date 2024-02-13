@@ -15,6 +15,9 @@
 #    command_state: curl "http://192.168.86.10:80/request?S_134_85" | cut -d "=" -f2 | cut -d ";" -f1
 #    value_template: '{{ value == "1" }}'
 
+## ToDo sensors:
+# - Add unique_ids
+
 - sensor:
     name: Lattialämmitys tila
     command: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
