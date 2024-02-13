@@ -21,5 +21,5 @@ Add automation to keep login session alive
   1. Open Home Assistant settings -> automations -> add automation -> edit yaml
   2. Copy and paste this project automations.yaml configuration to create the automation (or create it using GUI)
 
-UPDATE INSTRUCTIONS
+# UPDATE INSTRUCTIONS
 To be here...
