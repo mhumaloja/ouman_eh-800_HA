@@ -1,18 +1,19 @@
-- switch:
-    name: Lattialämmitys kotona-poissa
-    unique_id: lattia_kotonapoissa
-    command_on: curl "http://192.168.86.10:80/update?S_135_85=1;"
-    command_off: curl "http://192.168.86.10:80/update?S_135_85=0;"
-    command_state: curl "http://192.168.86.10:80/request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
-    value_template: '{{ value == "1" }}'
-
-- switch:
-    name: Lattialämmitys kuivaus
-    unique_id: ouman_eh800_roomtemp_switch
-    command_on: curl "http://192.168.86.10:80/update?S_134_85=5;"
-    command_off: curl "http://192.168.86.10:80/update?S_134_85=0;"
-    command_state: curl "http://192.168.86.10:80/request?S_134_85" | cut -d "=" -f2 | cut -d ";" -f1
-    value_template: '{{ value == "1" }}'
+## Switches are not working with this configuration, need to be fixed
+#- switch:
+#    name: Lattialämmitys kotona-poissa
+#    unique_id: lattia_kotonapoissa
+#    command_on: curl "http://192.168.86.10:80/update?S_135_85=1;"
+#    command_off: curl "http://192.168.86.10:80/update?S_135_85=0;"
+#    command_state: curl "http://192.168.86.10:80/request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
+#    value_template: '{{ value == "1" }}'
+#
+#- switch:
+#    name: Lattialämmitys kuivaus
+#    unique_id: ouman_eh800_roomtemp_switch
+#    command_on: curl "http://192.168.86.10:80/update?S_134_85=5;"
+#    command_off: curl "http://192.168.86.10:80/update?S_134_85=0;"
+#    command_state: curl "http://192.168.86.10:80/request?S_134_85" | cut -d "=" -f2 | cut -d ";" -f1
+#    value_template: '{{ value == "1" }}'
 
 - sensor:
     name: Lattialämmitys tila
