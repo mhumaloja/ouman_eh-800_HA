@@ -14,4 +14,4 @@ shell_command:
 input_text:
   ouman_eh800_ip:
     name: Ouman IP-address
-    initial: http://192.168.1.1:80/
+    initial: !secret ouman_base_url
