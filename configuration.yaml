@@ -10,8 +10,17 @@ command_line: !include command_line.yaml
 
 shell_command:
   ouman_logon: !secret ouman_logon
+  ouman_l1_finetune: curl "{{ states('input_text.ouman_eh800_ip')}}update?S_134_85={{ states('input_number.l1_fine_tune')}};"
 
 input_text:
   ouman_eh800_ip:
     name: Ouman IP-address
     initial: !secret ouman_base_url
+
+input_number:
+  l1_fine_tune:
+    name: L1 fine tune
+    initial: 0
+    min: -4
+    max: 4
+    step: 1
