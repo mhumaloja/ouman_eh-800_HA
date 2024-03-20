@@ -1,19 +1,15 @@
-## Switches are not working with this configuration, need to be fixed
-#- switch:
-#    name: Lattialämmitys kotona-poissa
-#    unique_id: lattia_kotonapoissa
-#    command_on: curl "{{ states('input_text.ouman_eh800_ip')}}update?S_135_85=1;"
-#    command_off: curl "{{ states('input_text.ouman_eh800_ip')}}update?S_135_85=0;"
-#    command_state: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1
-#    value_template: '{{ value == "1" }}'
-#
-#- switch:
-#    name: Lattialämmitys kuivaus
-#    unique_id: ouman_eh800_roomtemp_switch
-#    command_on: curl "{{ states('input_text.ouman_eh800_ip')}}update?S_134_85=5;"
-#    command_off: curl "{{ states('input_text.ouman_eh800_ip')}}update?S_134_85=0;"
-#    command_state: curl "{{ states('input_text.ouman_eh800_ip')}}request?S_134_85" | cut -d "=" -f2 | cut -d ";" -f1
-#    value_template: '{{ value == "1" }}'
+- switch:
+    name: Lattialämmitys kotona-poissa
+    unique_id: ouman_eh-800_home_away
+    command_on: curl "http://192.168.1.1/update?S_135_85=0;"                      
+    command_off: curl "http://192.168.1.1/update?S_135_85=1;"
+    command_state: curl "http://192.168.1.1/request?S_135_85" | cut -d "=" -f2 | cut -d ";" -f1                      
+    value_template: >
+        {% if value == "0" %}
+            true
+        {% else %}
+            false
+         {% endif %}
 
 ## ToDo sensors:
 # - Add unique_ids, state_classes
