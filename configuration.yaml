@@ -1,3 +1,4 @@
+## Ouman EH-800
 ## Insert these lines to configuration.yaml
 ## command_line row points to yaml file containing all sensors and switches for Ouman EH-800
 ## shell_command handles Ouman web interface session login in Home Assistant start (automation keeps it alive)
@@ -13,4 +14,4 @@ shell_command:
 input_text:
   ouman_eh800_ip:
     name: Ouman IP-address
-    initial: http://192.168.86.10:80/
+    initial: !secret ouman_base_url
