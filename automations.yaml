@@ -12,3 +12,19 @@ action:
   - service: shell_command.ouman_logon
     data: {}
 mode: single
+
+## Add automation to send L1 fine tune value to Ouman EH-800
+## Open Home Assistant settings -> automations -> add automation -> edit yaml
+## Copy this configuration to create the automation (or create it using GUI)
+
+alias: L1 fine tune
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_number.l1_fine_tune
+condition: []
+action:
+  - service: shell_command.ouman_l1_finetune
+    data: {}
+mode: single
