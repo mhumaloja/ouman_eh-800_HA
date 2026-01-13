@@ -12,7 +12,7 @@
          {% endif %}
 
 ## ToDo sensors:
-# - Add unique_ids, state_classes
+# - Add unique_ids, state_classes, device_classes where applicable
 
 - sensor:
     name: Lattialämmitys tila
